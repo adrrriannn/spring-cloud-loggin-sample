@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+
+    <springProperty scope="context" name="springAppName" source="spring.application.name"/>
+    <property name="LOG_PATH" value="log"/>
+
+    <appender name="FLUENCY" class="ch.qos.logback.more.appenders.FluencyLogbackAppender">
+        <tag>debug</tag>
+        <remoteHost>fake.host</remoteHost>
+        <port>24224</port>
+    </appender>
+
+    <root>
+        <level value="INFO"/>
+        <appender-ref ref="FLUENCY"/>
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>
